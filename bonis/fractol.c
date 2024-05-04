@@ -6,7 +6,7 @@
 /*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:32:42 by akoutate          #+#    #+#             */
-/*   Updated: 2024/05/04 17:04:23 by akoutate         ###   ########.fr       */
+/*   Updated: 2024/05/04 18:59:52 by akoutate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,37 @@ int closer()
 
 int	key_hook(int keycode, t_data *data)
 {
+	t_comp		comp;
+	t_comp		z_comp;
+	float		tmp;
 	if (keycode == 53)
 		exit(0);
+	else if (keycode == 124)
+	{
+		tmp = data->x_start;
+		data->x_start += 0.2 / 4 * (-data->x_start + data->x_end);
+		data->x_end += 0.2 / 4 * (-tmp + data->x_end);
+	}
+	else if (keycode == 126)
+	{
+		tmp = data->y_start;
+		data->y_start += 0.2 / 4 * (data->y_start - data->y_end);
+		data->y_end += 0.2 / 4 * (tmp - data->y_end);
+	}
+	else if (keycode == 125)
+	{
+		tmp = data->y_start;
+		data->y_start -= 0.2 / 4 * (data->y_start - data->y_end);
+		data->y_end -= 0.2 / 4 * (tmp - data->y_end);
+	}
+	else if (keycode == 123)
+	{
+		tmp = data->x_start;
+		data->x_start -= 0.2 / 4 * (-data->x_start + data->x_end);
+		data->x_end -= 0.2 / 4 * (-tmp + data->x_end);
+	}
+	fill_image(comp, z_comp, data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	return (0);
 }
 
@@ -29,20 +58,25 @@ int	mouse_hook(int mousecode,int x, int y ,t_data *data)
 {
 	t_comp		comp;
 	t_comp		z_comp;
+	float		tmp;
 
 	if (mousecode == 4)
 	{
-		data->x_start /= 1.1;
-		data->x_end /= 1.1;
-		data->y_start /= 1.1;
-		data->y_end /= 1.1;
+		tmp = data->x_start;
+		data->x_start += 0.5 / 4 * (-data->x_start + data->x_end);
+		data->x_end -= 0.5 / 4 * (-tmp + data->x_end);
+		tmp = data->y_start;
+		data->y_start -= 0.5 / 4 * (data->y_start - data->y_end);
+		data->y_end += 0.5 / 4 * (tmp - data->y_end);
 	}
 	else if (mousecode == 5)
 	{
-		data->x_start = data->x_start * 1.1;
-		data->x_end *= 1.1;
-		data->y_start *= 1.1;
-		data->y_end *= 1.1;
+		tmp = data->x_start;
+		data->x_start -= 0.5 / 4 * (-data->x_start + data->x_end);
+		data->x_end += 0.5 / 4 * (-tmp + data->x_end);
+		tmp = data->y_start;
+		data->y_start += 0.5 / 4 * (data->y_start - data->y_end);
+		data->y_end -= 0.5 / 4 * (tmp - data->y_end);
 	}
 	fill_image(comp, z_comp, data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
