@@ -6,7 +6,7 @@
 /*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:33:25 by akoutate          #+#    #+#             */
-/*   Updated: 2024/05/04 17:24:59 by akoutate         ###   ########.fr       */
+/*   Updated: 2024/05/06 05:40:41 by akoutate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	coloring(t_data *data)
 	i = -1;
 	k = 25;
 	j = 25;
-	while (++i < 99)
+	while (++i < 500)
 	{
 		tmp = data->z->real;
 		data->z->real = data->c->real + (data->z->real * data->z->real)
@@ -56,7 +56,7 @@ void	coloring(t_data *data)
 		if (data->z->real * data->z->real
 			+ data->z->imag * data->z->imag > 4)
 		{
-			my_mlx_pixel_put(data, data->x, data->y, create_trgb(0, k, k, j));
+			my_mlx_pixel_put(data, data->x, data->y, create_trgb(0, j, k, j));
 			data->j = 0;
 			break ;
 		}

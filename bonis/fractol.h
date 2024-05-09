@@ -6,7 +6,7 @@
 /*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:56:11 by akoutate          #+#    #+#             */
-/*   Updated: 2024/05/04 11:07:41 by akoutate         ###   ########.fr       */
+/*   Updated: 2024/05/06 10:43:52 by akoutate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	fill_image(t_comp c, t_comp z, t_data *data);
 int		ft_strcmp(const char *s1, const char *s2);
 double	my_atoi(char *str);
-int ft_strlen(char *str);
+int 	ft_strlen(char *str);
 
 #endif
