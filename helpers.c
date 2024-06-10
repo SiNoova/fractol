@@ -6,16 +6,16 @@
 /*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:33:25 by akoutate          #+#    #+#             */
-/*   Updated: 2024/05/04 17:24:59 by akoutate         ###   ########.fr       */
+/*   Updated: 2024/06/10 11:23:10 by akoutate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
 
 void	ft_swap(double *a, double *b, double *c, double *d)
 {
 	double	tmp;
+
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
@@ -24,25 +24,12 @@ void	ft_swap(double *a, double *b, double *c, double *d)
 	*d = tmp;
 }
 
-int	create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
-
 void	coloring(t_data *data)
 {
+	double	tmp;
 	int		i;
 	int		k;
-	int 	j;
-	double	tmp;
+	int		j;
 
 	i = -1;
 	k = 25;
@@ -70,7 +57,6 @@ void	coloring(t_data *data)
 	}
 	if (data->j)
 		my_mlx_pixel_put(data, data->x, data->y, 0x000000);
-
 }
 
 void	fill_image(t_comp c, t_comp z, t_data *data)
@@ -88,8 +74,10 @@ void	fill_image(t_comp c, t_comp z, t_data *data)
 		while (x < 800)
 		{
 			j = 1;
-			c.imag = ((double)y / (800 / (data->y_end - data->y_start))) + data->y_start;
-			c.real = ((double)x / (800 / (data->x_end - data->x_start))) + data->x_start;
+			c.imag = ((double)y / (800 / (data->y_end - data->y_start)))
+				+ data->y_start;
+			c.real = ((double)x / (800 / (data->x_end - data->x_start)))
+				+ data->x_start;
 			z.real = data->real;
 			z.imag = data->imag;
 			if (ft_strlen(data->set) == 1 && *(data->set) == 'j')
