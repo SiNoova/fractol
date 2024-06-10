@@ -6,7 +6,7 @@
 /*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:56:11 by akoutate          #+#    #+#             */
-/*   Updated: 2024/06/10 11:01:25 by akoutate         ###   ########.fr       */
+/*   Updated: 2024/06/10 13:35:18 by akoutate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ void	fill_image(t_comp c, t_comp z, t_data *data);
 int		ft_strcmp(const char *s1, const char *s2);
 double	my_atoi(char *str);
 int		ft_strlen(char *str);
+int		closer(void);
+int		key_hook(int keycode, t_data *data);
 
 #endif

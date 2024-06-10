@@ -6,23 +6,11 @@
 /*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:32:42 by akoutate          #+#    #+#             */
-/*   Updated: 2024/06/10 11:45:18 by akoutate         ###   ########.fr       */
+/*   Updated: 2024/06/10 13:35:38 by akoutate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-int	closer(void)
-{
-	exit(0);
-}
-
-int	key_hook(int keycode, t_data *data)
-{
-	if (keycode == 53)
-		exit(0);
-	return (0);
-}
 
 void	setting_up_data(t_data *data)
 {
@@ -64,7 +52,7 @@ int	main(int ac, char **av)
 	t_comp		comp;
 	t_comp		z_comp;
 
-	setting_up_data(&data);
+	setting_up_data(&data);	
 	data.set = av[1];
 	if (ac == 4 && av[1][0] == 'j')
 	{
@@ -72,7 +60,7 @@ int	main(int ac, char **av)
 		data.imag = atof(av[3]);
 	}
 	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, 800, 800, "mandelbrot");
+	data.win = mlx_new_window(data.mlx, 800, 800, "fractol");
 	data.img = mlx_new_image(data.mlx, 800, 800);
 	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel,
 			&data.line_length, &data.endian);
