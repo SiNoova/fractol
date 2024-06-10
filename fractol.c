@@ -6,7 +6,7 @@
 /*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:32:42 by akoutate          #+#    #+#             */
-/*   Updated: 2024/06/10 13:35:38 by akoutate         ###   ########.fr       */
+/*   Updated: 2024/06/10 14:50:16 by akoutate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,17 @@ int	main(int ac, char **av)
 	t_comp		z_comp;
 
 	setting_up_data(&data);	
-	data.set = av[1];
-	if (ac == 4 && av[1][0] == 'j')
+	if (ac == 4 && av[1][0] == 'j' && ft_strlen(av[1]) == 1)
 	{
 		data.real = atof(av[2]);
 		data.imag = atof(av[3]);
+	}
+	else if (ac == 2 && av[1][0] == 'm' && ft_strlen(av[1]) == 1)
+		data.set = av[1];
+	else
+	{
+		write(1 , "invalid syntax:\n./a.out m (for mandelbrot)\n./a.out j x y (for julia sets)\n", 75);
+		return (0);
 	}
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, 800, 800, "fractol");

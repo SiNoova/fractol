@@ -6,7 +6,7 @@
 /*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:33:25 by akoutate          #+#    #+#             */
-/*   Updated: 2024/06/10 12:59:15 by akoutate         ###   ########.fr       */
+/*   Updated: 2024/06/10 14:51:26 by akoutate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	fill_image(t_comp c, t_comp z, t_data *data)
 			c.real = x / (800 / (data->x_end - data->x_start)) + data->x_start;
 			z.real = data->real;
 			z.imag = data->imag;
-			if (ft_strlen(data->set) == 1 && *(data->set) == 'j')
+			if (*(data->set) == 'j')
 				ft_swap(&c.real, &z.real, &c.imag, &z.imag);
 			data->x = x++;
 			chi_haja(data, j, &c, &z);
