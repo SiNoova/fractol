@@ -6,14 +6,13 @@
 /*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:32:42 by akoutate          #+#    #+#             */
-/*   Updated: 2024/05/04 17:04:23 by akoutate         ###   ########.fr       */
+/*   Updated: 2024/06/10 11:00:10 by akoutate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
 
-int closer()
+int	closer(void)
 {
 	exit(0);
 }
@@ -25,7 +24,7 @@ int	key_hook(int keycode, t_data *data)
 	return (0);
 }
 
-int	mouse_hook(int mousecode,int x, int y ,t_data *data)
+int	mouse_hook(int mousecode, int x, int y, t_data *data)
 {
 	t_comp		comp;
 	t_comp		z_comp;
@@ -49,18 +48,23 @@ int	mouse_hook(int mousecode,int x, int y ,t_data *data)
 	return (0);
 }
 
+void	setting_up_data(t_data *data)
+{
+	data->x_start = -2;
+	data->x_end = 2;
+	data->y_start = 2;
+	data->y_end = -2;
+	data->real = 0;
+	data->imag = 0;
+}
+
 int	main(int ac, char **av)
 {
 	t_data		data;
 	t_comp		comp;
 	t_comp		z_comp;
 
-	data.x_start = -2;
-	data.x_end = 2;
-	data.y_start = 2;
-	data.y_end = -2;
-	data.real = 0;
-	data.imag = 0;
+	setting_up_data(&data);
 	data.set = av[1];
 	if (ac == 4 && av[1][0] == 'j')
 	{
@@ -74,7 +78,7 @@ int	main(int ac, char **av)
 			&data.line_length, &data.endian);
 	fill_image(comp, z_comp, &data);
 	mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
-	mlx_hook(data.win, 17, 0, closer , NULL);
+	mlx_hook(data.win, 17, 0, closer, NULL);
 	mlx_mouse_hook(data.win, mouse_hook, &data);
 	mlx_key_hook(data.win, key_hook, &data);
 	mlx_loop(data.mlx);
