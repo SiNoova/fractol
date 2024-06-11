@@ -6,7 +6,7 @@
 /*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:32:42 by akoutate          #+#    #+#             */
-/*   Updated: 2024/06/10 14:50:16 by akoutate         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:26:30 by akoutate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	main(int ac, char **av)
 	{
 		data.real = atof(av[2]);
 		data.imag = atof(av[3]);
+		data.set = av[1];
 	}
 	else if (ac == 2 && av[1][0] == 'm' && ft_strlen(av[1]) == 1)
 		data.set = av[1];

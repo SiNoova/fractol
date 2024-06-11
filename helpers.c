@@ -6,7 +6,7 @@
 /*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:33:25 by akoutate          #+#    #+#             */
-/*   Updated: 2024/06/10 14:51:26 by akoutate         ###   ########.fr       */
+/*   Updated: 2024/06/11 12:56:52 by akoutate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_swap(double *a, double *b, double *c, double *d)
 {
 	double	tmp;
+
 
 	tmp = *a;
 	*a = *b;
@@ -96,6 +97,7 @@ void	fill_image(t_comp c, t_comp z, t_data *data)
 			z.imag = data->imag;
 			if (*(data->set) == 'j')
 				ft_swap(&c.real, &z.real, &c.imag, &z.imag);
+			
 			data->x = x++;
 			chi_haja(data, j, &c, &z);
 		}

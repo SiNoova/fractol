@@ -6,7 +6,7 @@
 /*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:56:11 by akoutate          #+#    #+#             */
-/*   Updated: 2024/06/10 14:45:25 by akoutate         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:10:48 by akoutate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <mlx.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 typedef struct complex
 {
