@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nova <nova@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:33:25 by akoutate          #+#    #+#             */
-/*   Updated: 2024/06/11 12:56:52 by akoutate         ###   ########.fr       */
+/*   Updated: 2024/06/15 19:56:59 by nova             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_swap(double *a, double *b, double *c, double *d)
 	*d = tmp;
 }
 
-int	tansmiha_mn_b3d(t_data *data, int k, int j)
+int	tansmiha_mn_b3d(t_data *data, int k, int j, int l)
 {
 	double	tmp;
 
@@ -36,7 +36,7 @@ int	tansmiha_mn_b3d(t_data *data, int k, int j)
 	if (data->z->real * data->z->real
 		+ data->z->imag * data->z->imag > 4)
 	{
-		my_mlx_pixel_put(data, data->x, data->y, create_trgb(0, k, k, j));
+		my_mlx_pixel_put(data, data->x, data->y, create_trgb(0, k, j, l));
 		data->j = 0;
 		return (1);
 	}
@@ -48,20 +48,24 @@ void	coloring(t_data *data)
 	int		i;
 	int		k;
 	int		j;
-
+	int		l;
 	i = -1;
 	k = 25;
 	j = 25;
+	l = 25;
 	while (++i < 99)
 	{
-		if (tansmiha_mn_b3d(data, k, j))
+		if (tansmiha_mn_b3d(data, k, j, l))
 			break ;
 		if (k < 255)
-			k += 5;
+			k += 10;
+		else if (j < 255)
+		{
+			j += 10;
+		}
 		else
 		{
-			k = 25;
-			j += 10;
+			l += 10;
 		}
 	}
 	if (data->j)

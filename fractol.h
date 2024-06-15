@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nova <nova@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:56:11 by akoutate          #+#    #+#             */
-/*   Updated: 2024/06/10 15:10:48 by akoutate         ###   ########.fr       */
+/*   Updated: 2024/06/15 20:01:22 by nova             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <mlx.h>
+# include "minilibx-linux/mlx.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -55,5 +55,6 @@ double	my_atoi(char *str);
 int		ft_strlen(char *str);
 int		closer(void);
 int		key_hook(int keycode, t_data *data);
+int		digit_checker(char *str);
 
 #endif
