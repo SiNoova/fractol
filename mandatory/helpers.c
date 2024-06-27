@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nova <nova@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:33:25 by akoutate          #+#    #+#             */
-/*   Updated: 2024/06/15 19:56:59 by nova             ###   ########.fr       */
+/*   Updated: 2024/06/27 17:23:20 by akoutate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_swap(double *a, double *b, double *c, double *d)
 {
 	double	tmp;
 
-
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
@@ -25,7 +24,7 @@ void	ft_swap(double *a, double *b, double *c, double *d)
 	*d = tmp;
 }
 
-int	tansmiha_mn_b3d(t_data *data, int k, int j, int l)
+int	tansmiha_mn_b3d(t_data *data, int k, int j)
 {
 	double	tmp;
 
@@ -36,7 +35,7 @@ int	tansmiha_mn_b3d(t_data *data, int k, int j, int l)
 	if (data->z->real * data->z->real
 		+ data->z->imag * data->z->imag > 4)
 	{
-		my_mlx_pixel_put(data, data->x, data->y, create_trgb(0, k, j, l));
+		my_mlx_pixel_put(data, data->x, data->y, create_trgb(0, j, j, k));
 		data->j = 0;
 		return (1);
 	}
@@ -48,25 +47,18 @@ void	coloring(t_data *data)
 	int		i;
 	int		k;
 	int		j;
-	int		l;
+
 	i = -1;
 	k = 25;
 	j = 25;
-	l = 25;
 	while (++i < 99)
 	{
-		if (tansmiha_mn_b3d(data, k, j, l))
+		if (tansmiha_mn_b3d(data, k, j))
 			break ;
 		if (k < 255)
 			k += 10;
 		else if (j < 255)
-		{
 			j += 10;
-		}
-		else
-		{
-			l += 10;
-		}
 	}
 	if (data->j)
 		my_mlx_pixel_put(data, data->x, data->y, 0x000000);
@@ -80,7 +72,7 @@ void	chi_haja(t_data *data, int j, t_comp *c, t_comp *z)
 	coloring(data);
 }
 
-void	fill_image(t_comp c, t_comp z, t_data *data)
+void	fill_image(t_comp *c, t_comp *z, t_data *data)
 {
 	int		x;
 	int		y;
@@ -95,15 +87,14 @@ void	fill_image(t_comp c, t_comp z, t_data *data)
 		while (x < 800)
 		{
 			j = 1;
-			c.imag = y / (800 / (data->y_end - data->y_start)) + data->y_start;
-			c.real = x / (800 / (data->x_end - data->x_start)) + data->x_start;
-			z.real = data->real;
-			z.imag = data->imag;
+			c->imag = y / (800 / (data->y_end - data->y_start)) + data->y_start;
+			c->real = x / (800 / (data->x_end - data->x_start)) + data->x_start;
+			z->real = data->real;
+			z->imag = data->imag;
 			if (*(data->set) == 'j')
-				ft_swap(&c.real, &z.real, &c.imag, &z.imag);
-			
+				ft_swap(&c->real, &z->real, &c->imag, &z->imag);
 			data->x = x++;
-			chi_haja(data, j, &c, &z);
+			chi_haja(data, j, c, z);
 		}
 		y++;
 	}
