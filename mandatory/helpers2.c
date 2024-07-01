@@ -6,7 +6,7 @@
 /*   By: akoutate <akoutate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:38:00 by akoutate          #+#    #+#             */
-/*   Updated: 2024/06/10 11:21:46 by akoutate         ###   ########.fr       */
+/*   Updated: 2024/06/29 20:42:28 by akoutate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,31 +41,6 @@ int	ft_strcmp(const char *s1, const char *s2)
 		i++;
 	}
 	return (0);
-}
-
-double	my_atoi(char *str)
-{
-	int			i;
-	int			sign;
-	double		nbr;
-
-	i = 0;
-	sign = 1;
-	nbr = 0;
-	while ((str[i] == ' ' || str[i] == '\t') && str[i])
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
-	{
-		nbr = nbr * 10 + (str[i] - 48);
-		i++;
-	}
-	return (nbr * sign);
 }
 
 int	ft_strlen(char *str)
